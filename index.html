@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impostor Game 🎭</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1>🎭 Impostor</h1>
+            <p class="subtitle">One of you doesn't belong...</p>
+            
+            <div class="setup-form">
+                <div class="form-group">
+                    <label>Number of Players</label>
+                    <div class="player-count">
+                        <button class="btn-circle" onclick="changePlayerCount(-1)">−</button>
+                        <span id="player-count">4</span>
+                        <button class="btn-circle" onclick="changePlayerCount(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Impostors</label>
+                    <div class="player-count">
+                        <button class="btn-circle" onclick="changeImpostorCount(-1)">−</button>
+                        <span id="impostor-count">1</span>
+                        <button class="btn-circle" onclick="changeImpostorCount(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <div class="category-grid">
+                        <button class="category-btn active" data-category="bollywood" onclick="selectCategory(this)">🎬 Bollywood</button>
+                        <button class="category-btn" data-category="memes" onclick="selectCategory(this)">😂 Memes</button>
+                        <button class="category-btn" data-category="celebrities" onclick="selectCategory(this)">⭐ Celebrities</button>
+                        <button class="category-btn" data-category="indianFood" onclick="selectCategory(this)">🍛 Indian Food</button>
+                        <button class="category-btn" data-category="bollywoodSongs" onclick="selectCategory(this)">🎵 Bollywood Songs</button>
+                        <button class="category-btn" data-category="cricket" onclick="selectCategory(this)">🏏 Cricket</button>
+                        <button class="category-btn" data-category="hollywood" onclick="selectCategory(this)">🎥 Hollywood</button>
+                        <button class="category-btn" data-category="indianTV" onclick="selectCategory(this)">📺 Indian TV</button>
+                        <button class="category-btn" data-category="dialogues" onclick="selectCategory(this)">🗣️ Famous Dialogues</button>
+                        <button class="category-btn" data-category="indianObjects" onclick="selectCategory(this)">🪔 Indian Objects</button>
+                        <button class="category-btn" data-category="all" onclick="selectCategory(this)">🎲 Mix All</button>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="startGame()">Start Game 🚀</button>
+            </div>
+        </div>
+
+        <!-- Player Names Screen -->
+        <div id="names-screen" class="screen">
+            <h2>👥 Enter Player Names</h2>
+            <p class="subtitle">Who's playing today?</p>
+            <div class="names-form" id="names-form"></div>
+            <button class="btn-primary" onclick="submitNames()">Let's Go! 🎬</button>
+        </div>
+
+        <!-- Word Reveal Screen -->
+        <div id="reveal-screen" class="screen">
+            <div class="reveal-card" id="reveal-card">
+                <div class="card-front" id="card-front">
+                    <h2 id="current-player-name">Player 1</h2>
+                    <p class="tap-text">Tap to reveal your word</p>
+                    <div class="peek-icon">👁️</div>
+                </div>
+                <div class="card-back" id="card-back">
+                    <div id="word-display"></div>
+                    <p class="remember-text">Remember your word!</p>
+                </div>
+            </div>
+            <button class="btn-secondary" id="next-player-btn" onclick="nextPlayer()">Next Player →</button>
+            <button class="btn-secondary" id="start-discussion-btn" onclick="startDiscussion()" style="display:none">Start Discussion 🗣️</button>
+        </div>
+
+        <!-- Discussion Screen -->
+        <div id="discussion-screen" class="screen">
+            <h2>🗣️ Discussion Time</h2>
+            <p class="discussion-info">Each player describes the word WITHOUT saying it.<br>Find the impostor!</p>
+            
+            <div class="speaking-order-section" id="speaking-order"></div>
+
+            <div class="timer-section">
+                <div class="timer" id="timer">03:00</div>
+                <div class="timer-controls">
+                    <button class="btn-small" onclick="toggleTimer()" id="timer-btn">⏸️ Pause</button>
+                    <button class="btn-small" onclick="resetTimer()">🔄 Reset</button>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <h3>💡 Rules</h3>
+                <ul>
+                    <li>Speak in order — tap a name to track whose turn it is</li>
+                    <li>Give one clue per round, then pass to the next</li>
+                    <li>Be vague enough to not help the impostor</li>
+                    <li>Be specific enough to prove you know the word</li>
+                </ul>
+            </div>
+
+            <button class="btn-primary" onclick="startVoting()">Start Voting 🗳️</button>
+        </div>
+
+        <!-- Voting Screen -->
+        <div id="voting-screen" class="screen">
+            <h2>🗳️ Vote!</h2>
+            <p>Who do you think is the impostor?</p>
+            <div class="vote-grid" id="vote-grid"></div>
+            <button class="btn-primary" onclick="revealImpostor()">Reveal Impostor 🎭</button>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <div id="result-content"></div>
+            <div class="word-reveal-section">
+                <p>The word was:</p>
+                <h2 id="the-word" class="the-word"></h2>
+            </div>
+            <button class="btn-primary" onclick="playAgain()">Play Again 🔄</button>
+            <button class="btn-secondary" onclick="goHome()">Home 🏠</button>
+        </div>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
