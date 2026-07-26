@@ -109,44 +109,19 @@
             
             <div class="speaking-order-section" id="speaking-order"></div>
 
-            <div class="timer-section">
-                <div class="timer" id="timer">03:00</div>
-                <div class="timer-controls">
-                    <button class="btn-small" onclick="toggleTimer()" id="timer-btn"><i data-lucide="circle-pause"></i> Pause</button>
-                    <button class="btn-small" onclick="resetTimer()"><i data-lucide="rotate-cw"></i> Reset</button>
+            <div id="discussion-reveal" style="display:none">
+                <div id="discussion-result-content"></div>
+                <div class="word-reveal-section">
+                    <p>The word was:</p>
+                    <h2 id="discussion-the-word" class="the-word"></h2>
                 </div>
             </div>
 
-            <div class="tips-box">
-                <h3><i data-lucide="lightbulb"></i> Rules</h3>
-                <ul>
-                    <li>Speak in order — tap a name to track whose turn it is</li>
-                    <li>Give one clue per round, then pass to the next</li>
-                    <li>Be vague enough to not help the impostor</li>
-                    <li>Be specific enough to prove you know the word</li>
-                </ul>
+            <div id="discussion-actions">
+                <button class="btn-primary" onclick="revealImpostor()"><i data-lucide="drama"></i> Reveal Impostor</button>
+                <button class="btn-primary" onclick="playAgain()" style="background: var(--success)"><i data-lucide="refresh-cw"></i> Play Again</button>
+                <button class="btn-secondary" onclick="goHome()"><i data-lucide="house"></i> Home</button>
             </div>
-
-            <button class="btn-primary" onclick="startVoting()"><i data-lucide="vote"></i> Start Voting</button>
-        </div>
-
-        <!-- Voting Screen -->
-        <div id="voting-screen" class="screen">
-            <h2><i data-lucide="vote"></i> Vote!</h2>
-            <p>Who do you think is the impostor?</p>
-            <div class="vote-grid" id="vote-grid"></div>
-            <button class="btn-primary" onclick="revealImpostor()"><i data-lucide="drama"></i> Reveal Impostor</button>
-        </div>
-
-        <!-- Result Screen -->
-        <div id="result-screen" class="screen">
-            <div id="result-content"></div>
-            <div class="word-reveal-section">
-                <p>The word was:</p>
-                <h2 id="the-word" class="the-word"></h2>
-            </div>
-            <button class="btn-primary" onclick="playAgain()"><i data-lucide="refresh-cw"></i> Play Again</button>
-            <button class="btn-secondary" onclick="goHome()"><i data-lucide="house"></i> Home</button>
         </div>
     </div>
 

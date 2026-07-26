@@ -11,10 +11,6 @@ let gameState = {
     impostorWord: '',
     cardRevealed: false,
     cardTransitioning: false,
-    timerInterval: null,
-    timerSeconds: 180,
-    timerRunning: false,
-    votedPlayer: null,
     speakingOrder: [],
     starterIndex: 0
 };
@@ -177,6 +173,9 @@ function nextPlayer() {
 function startDiscussion() {
     showScreen('discussion-screen');
     
+    // Reset reveal state
+    document.getElementById('discussion-reveal').style.display = 'none';
+    
     // Game logic: Fully randomize the speaking order with ONE constraint —
     // the first speaker must be a non-impostor.
     //
@@ -217,9 +216,6 @@ function startDiscussion() {
     gameState.speakingOrder = [starter, ...remaining];
 
     renderSpeakingOrder();
-    gameState.timerSeconds = 180;
-    updateTimerDisplay();
-    startTimer();
 }
 
 function renderSpeakingOrder() {
@@ -250,103 +246,21 @@ function renderSpeakingOrder() {
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
-// --- Timer ---
-function startTimer() {
-    gameState.timerRunning = true;
-    document.getElementById('timer-btn').innerHTML = '<i data-lucide="circle-pause"></i> Pause';
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-    gameState.timerInterval = setInterval(() => {
-        gameState.timerSeconds--;
-        updateTimerDisplay();
-        if (gameState.timerSeconds <= 0) {
-            clearInterval(gameState.timerInterval);
-            gameState.timerRunning = false;
-            document.getElementById('timer').classList.add('timer-done');
-        }
-
-        // Re-initialize icons after timer text updates
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-    }, 1000);
-}
-
-function toggleTimer() {
-    if (gameState.timerRunning) {
-        clearInterval(gameState.timerInterval);
-        gameState.timerRunning = false;
-        document.getElementById('timer-btn').innerHTML = '<i data-lucide="circle-play"></i> Resume';
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-    } else {
-        startTimer();
-    }
-}
-
-function resetTimer() {
-    clearInterval(gameState.timerInterval);
-    gameState.timerSeconds = 180;
-    gameState.timerRunning = false;
-    updateTimerDisplay();
-    document.getElementById('timer').classList.remove('timer-done');
-    document.getElementById('timer-btn').innerHTML = '<i data-lucide="circle-play"></i> Start';
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-}
-
-function updateTimerDisplay() {
-    const min = Math.floor(gameState.timerSeconds / 60);
-    const sec = gameState.timerSeconds % 60;
-    document.getElementById('timer').textContent =
-        `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-}
-
-// --- Voting ---
-function startVoting() {
-    clearInterval(gameState.timerInterval);
-    showScreen('voting-screen');
-
-    const grid = document.getElementById('vote-grid');
-    grid.innerHTML = '';
-    gameState.votedPlayer = null;
-
-    for (let i = 1; i <= gameState.playerCount; i++) {
-        const btn = document.createElement('button');
-        btn.className = 'vote-btn';
-        btn.textContent = gameState.playerNames[i - 1];
-        btn.onclick = () => {
-            document.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            gameState.votedPlayer = i;
-        };
-        grid.appendChild(btn);
-    }
-}
-
+// --- Reveal ---
 function revealImpostor() {
-    showScreen('result-screen');
-
     const impostorList = gameState.impostors.map(i => gameState.playerNames[i - 1]).join(', ');
-    const caught = gameState.votedPlayer && gameState.impostors.includes(gameState.votedPlayer);
 
-    let resultHTML = '';
-    if (caught) {
-        resultHTML = `
-            <div class="result-success">
-                <h2><i data-lucide="party-popper"></i> Impostor Caught!</h2>
-                <p>The impostor${gameState.impostorCount > 1 ? 's were' : ' was'}: <strong>${impostorList}</strong></p>
-                <div class="result-emoji"><i data-lucide="search-check"></i></div>
-            </div>
-        `;
-    } else {
-        resultHTML = `
-            <div class="result-fail">
-                <h2><i data-lucide="skull"></i> Impostor Wins!</h2>
-                <p>The impostor${gameState.impostorCount > 1 ? 's were' : ' was'}: <strong>${impostorList}</strong></p>
-                ${gameState.votedPlayer ? `<p>You voted for ${gameState.playerNames[gameState.votedPlayer - 1]} — wrong!</p>` : '<p>No vote was cast!</p>'}
-                <div class="result-emoji"><i data-lucide="drama"></i></div>
-            </div>
-        `;
-    }
+    const resultHTML = `
+        <div class="result-fail">
+            <h2><i data-lucide="drama"></i> The Impostor${gameState.impostorCount > 1 ? 's' : ''}</h2>
+            <p><strong>${impostorList}</strong></p>
+            <div class="result-emoji"><i data-lucide="drama"></i></div>
+        </div>
+    `;
 
-    document.getElementById('result-content').innerHTML = resultHTML;
-    document.getElementById('the-word').textContent = gameState.realWord;
+    document.getElementById('discussion-result-content').innerHTML = resultHTML;
+    document.getElementById('discussion-the-word').textContent = gameState.realWord;
+    document.getElementById('discussion-reveal').style.display = 'block';
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
@@ -357,6 +271,7 @@ function playAgain() {
 }
 
 function goHome() {
+    document.getElementById('discussion-reveal').style.display = 'none';
     showScreen('start-screen');
 }
 
