@@ -7,13 +7,13 @@
 :root {
     --primary: #f59e0b;
     --primary-dark: #d97706;
-    --danger: #e74c3c;
-    --success: #00b894;
-    --bg: #0f0f1a;
-    --card-bg: #1a1a2e;
-    --card-border: #2d2d44;
+    --danger: #ef4444;
+    --success: #10b981;
+    --bg: #12110e;
+    --card-bg: #1e1b15;
+    --card-border: #302b22;
     --text: #ffffff;
-    --text-muted: #a0a0b0;
+    --text-muted: #a0a0a0;
     --gradient: linear-gradient(135deg, #f59e0b, #f97316);
 }
 
@@ -256,7 +256,7 @@ h1 {
 }
 
 .impostor-badge {
-    background: rgba(231, 76, 60, 0.2);
+    background: rgba(239, 68, 68, 0.2);
     border: 2px solid var(--danger);
     border-radius: 12px;
     padding: 12px 24px;
@@ -267,7 +267,7 @@ h1 {
 }
 
 .civilian-badge {
-    background: rgba(0, 184, 148, 0.2);
+    background: rgba(16, 185, 129, 0.2);
     border: 2px solid var(--success);
     border-radius: 12px;
     padding: 12px 24px;
@@ -338,7 +338,7 @@ h1 {
 
 .order-item.order-active {
     border-color: var(--success);
-    background: rgba(0, 184, 148, 0.1);
+    background: rgba(16, 185, 129, 0.1);
 }
 
 .order-item.order-active .order-num {
@@ -490,7 +490,7 @@ h1 {
 
 .vote-btn.selected {
     border-color: var(--danger);
-    background: rgba(231, 76, 60, 0.15);
+    background: rgba(239, 68, 68, 0.15);
     color: var(--danger);
 }
 
@@ -503,12 +503,12 @@ h1 {
 }
 
 .result-success {
-    background: rgba(0, 184, 148, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border: 2px solid var(--success);
 }
 
 .result-fail {
-    background: rgba(231, 76, 60, 0.1);
+    background: rgba(239, 68, 68, 0.1);
     border: 2px solid var(--danger);
 }
 
