@@ -127,16 +127,16 @@ function setupRevealCard() {
     const role = gameState.roles[gameState.currentPlayer - 1];
     const isImpostor = (role === 'impostor');
 
-    console.log(`[Impostor Game] Player ${gameState.currentPlayer} (${playerName}) → role: ${role}`);
+    console.log(`[Impostor Game] Player ${gameState.currentPlayer} (${playerName}) -> role: ${role}`);
 
     if (isImpostor) {
         wordDisplay.innerHTML = `
-            <div class="impostor-badge">🎭 YOU ARE THE IMPOSTOR!</div>
+            <div class="impostor-badge"><i data-lucide="drama"></i> YOU ARE THE IMPOSTOR!</div>
             <p class="impostor-word">Your word: <strong>${gameState.impostorWord}</strong></p>
         `;
     } else {
         wordDisplay.innerHTML = `
-            <div class="civilian-badge">✅ You're safe!</div>
+            <div class="civilian-badge"><i data-lucide="circle-check-big"></i> You're safe!</div>
             <p class="real-word">Your word: <strong>${gameState.realWord}</strong></p>
         `;
     }
@@ -155,6 +155,9 @@ function setupRevealCard() {
         wordDisplay.style.visibility = 'visible';
         gameState.cardTransitioning = false;
     }, 650);
+
+    // Re-initialize Lucide icons after injecting content
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 
     // Card click handler — guarded by transition lock
     card.onclick = () => {
@@ -226,7 +229,7 @@ function renderSpeakingOrder() {
     const starterName = gameState.playerNames[gameState.starterIndex - 1];
     const starterBanner = document.createElement('div');
     starterBanner.className = 'starter-banner';
-    starterBanner.innerHTML = `🎲 Randomized! <strong>${starterName}</strong> starts first!`;
+    starterBanner.innerHTML = `<i data-lucide="shuffle"></i> Randomized! <strong>${starterName}</strong> starts first!`;
     container.appendChild(starterBanner);
 
     const list = document.createElement('div');
@@ -243,12 +246,15 @@ function renderSpeakingOrder() {
         list.appendChild(item);
     });
     container.appendChild(list);
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 // --- Timer ---
 function startTimer() {
     gameState.timerRunning = true;
-    document.getElementById('timer-btn').textContent = '⏸️ Pause';
+    document.getElementById('timer-btn').innerHTML = '<i data-lucide="circle-pause"></i> Pause';
+    if (typeof lucide !== 'undefined') lucide.createIcons();
     gameState.timerInterval = setInterval(() => {
         gameState.timerSeconds--;
         updateTimerDisplay();
@@ -257,6 +263,9 @@ function startTimer() {
             gameState.timerRunning = false;
             document.getElementById('timer').classList.add('timer-done');
         }
+
+        // Re-initialize icons after timer text updates
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     }, 1000);
 }
 
@@ -264,7 +273,8 @@ function toggleTimer() {
     if (gameState.timerRunning) {
         clearInterval(gameState.timerInterval);
         gameState.timerRunning = false;
-        document.getElementById('timer-btn').textContent = '▶️ Resume';
+        document.getElementById('timer-btn').innerHTML = '<i data-lucide="circle-play"></i> Resume';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     } else {
         startTimer();
     }
@@ -276,7 +286,8 @@ function resetTimer() {
     gameState.timerRunning = false;
     updateTimerDisplay();
     document.getElementById('timer').classList.remove('timer-done');
-    document.getElementById('timer-btn').textContent = '▶️ Start';
+    document.getElementById('timer-btn').innerHTML = '<i data-lucide="circle-play"></i> Start';
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 function updateTimerDisplay() {
@@ -318,24 +329,26 @@ function revealImpostor() {
     if (caught) {
         resultHTML = `
             <div class="result-success">
-                <h2>🎉 Impostor Caught!</h2>
+                <h2><i data-lucide="party-popper"></i> Impostor Caught!</h2>
                 <p>The impostor${gameState.impostorCount > 1 ? 's were' : ' was'}: <strong>${impostorList}</strong></p>
-                <p class="result-emoji">🕵️‍♂️✅</p>
+                <div class="result-emoji"><i data-lucide="search-check"></i></div>
             </div>
         `;
     } else {
         resultHTML = `
             <div class="result-fail">
-                <h2>😈 Impostor Wins!</h2>
+                <h2><i data-lucide="skull"></i> Impostor Wins!</h2>
                 <p>The impostor${gameState.impostorCount > 1 ? 's were' : ' was'}: <strong>${impostorList}</strong></p>
                 ${gameState.votedPlayer ? `<p>You voted for ${gameState.playerNames[gameState.votedPlayer - 1]} — wrong!</p>` : '<p>No vote was cast!</p>'}
-                <p class="result-emoji">🎭💀</p>
+                <div class="result-emoji"><i data-lucide="drama"></i></div>
             </div>
         `;
     }
 
     document.getElementById('result-content').innerHTML = resultHTML;
     document.getElementById('the-word').textContent = gameState.realWord;
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 // --- Navigation ---

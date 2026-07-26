@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Impostor 🎭 — Social Deduction Party Game</title>
-    <meta name="title" content="Impostor 🎭 — Social Deduction Party Game">
+    <title>Impostor — Social Deduction Party Game</title>
+    <meta name="title" content="Impostor — Social Deduction Party Game">
     <meta name="description" content="A social deduction party game for 3–12 players. One of you doesn't belong — can you find the impostor before they blend in? No install needed, just open and play!">
     <meta name="keywords" content="impostor game, impostor, social deduction, party game, spyfall, chameleon, word game, multiplayer, bluffing game">
     <meta name="author" content="imposter.kanha.dev">
@@ -17,7 +17,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://imposter.kanha.dev/">
-    <meta property="og:title" content="Impostor 🎭 — Social Deduction Party Game">
+    <meta property="og:title" content="Impostor — Social Deduction Party Game">
     <meta property="og:description" content="A social deduction party game for 3–12 players. One of you doesn't belong — can you find the impostor before they blend in?">
     <meta property="og:site_name" content="Impostor Game">
     <meta property="og:locale" content="en_US">
@@ -25,7 +25,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://imposter.kanha.dev/">
-    <meta name="twitter:title" content="Impostor 🎭 — Social Deduction Party Game">
+    <meta name="twitter:title" content="Impostor — Social Deduction Party Game">
     <meta name="twitter:description" content="A social deduction party game for 3–12 players. One of you doesn't belong — can you find the impostor before they blend in?">
 
     <link rel="stylesheet" href="style.css">
@@ -34,7 +34,7 @@
     <div class="container">
         <!-- Start Screen -->
         <div id="start-screen" class="screen active">
-            <h1>🎭 Impostor</h1>
+            <h1><i data-lucide="drama"></i> Impostor</h1>
             <p class="subtitle">One of you doesn't belong...</p>
             
             <div class="setup-form">
@@ -59,30 +59,30 @@
                 <div class="form-group">
                     <label>Category</label>
                     <div class="category-grid">
-                        <button class="category-btn active" data-category="bollywood" onclick="selectCategory(this)">🎬 Bollywood</button>
-                        <button class="category-btn" data-category="memes" onclick="selectCategory(this)">😂 Memes</button>
-                        <button class="category-btn" data-category="celebrities" onclick="selectCategory(this)">⭐ Celebrities</button>
-                        <button class="category-btn" data-category="indianFood" onclick="selectCategory(this)">🍛 Indian Food</button>
-                        <button class="category-btn" data-category="bollywoodSongs" onclick="selectCategory(this)">🎵 Bollywood Songs</button>
-                        <button class="category-btn" data-category="cricket" onclick="selectCategory(this)">🏏 Cricket</button>
-                        <button class="category-btn" data-category="hollywood" onclick="selectCategory(this)">🎥 Hollywood</button>
-                        <button class="category-btn" data-category="indianTV" onclick="selectCategory(this)">📺 Indian TV</button>
-                        <button class="category-btn" data-category="dialogues" onclick="selectCategory(this)">🗣️ Famous Dialogues</button>
-                        <button class="category-btn" data-category="indianObjects" onclick="selectCategory(this)">🪔 Indian Objects</button>
-                        <button class="category-btn" data-category="all" onclick="selectCategory(this)">🎲 Mix All</button>
+                        <button class="category-btn active" data-category="bollywood" onclick="selectCategory(this)"><i data-lucide="clapperboard"></i> Bollywood</button>
+                        <button class="category-btn" data-category="memes" onclick="selectCategory(this)"><i data-lucide="smile-plus"></i> Memes</button>
+                        <button class="category-btn" data-category="celebrities" onclick="selectCategory(this)"><i data-lucide="star"></i> Celebrities</button>
+                        <button class="category-btn" data-category="indianFood" onclick="selectCategory(this)"><i data-lucide="utensils-crossed"></i> Indian Food</button>
+                        <button class="category-btn" data-category="bollywoodSongs" onclick="selectCategory(this)"><i data-lucide="music"></i> Bollywood Songs</button>
+                        <button class="category-btn" data-category="cricket" onclick="selectCategory(this)"><i data-lucide="trophy"></i> Cricket</button>
+                        <button class="category-btn" data-category="hollywood" onclick="selectCategory(this)"><i data-lucide="film"></i> Hollywood</button>
+                        <button class="category-btn" data-category="indianTV" onclick="selectCategory(this)"><i data-lucide="tv"></i> Indian TV</button>
+                        <button class="category-btn" data-category="dialogues" onclick="selectCategory(this)"><i data-lucide="message-circle"></i> Famous Dialogues</button>
+                        <button class="category-btn" data-category="indianObjects" onclick="selectCategory(this)"><i data-lucide="flame"></i> Indian Objects</button>
+                        <button class="category-btn" data-category="all" onclick="selectCategory(this)"><i data-lucide="dice-5"></i> Mix All</button>
                     </div>
                 </div>
 
-                <button class="btn-primary" onclick="startGame()">Start Game 🚀</button>
+                <button class="btn-primary" onclick="startGame()"><i data-lucide="play"></i> Start Game</button>
             </div>
         </div>
 
         <!-- Player Names Screen -->
         <div id="names-screen" class="screen">
-            <h2>👥 Enter Player Names</h2>
+            <h2><i data-lucide="users"></i> Enter Player Names</h2>
             <p class="subtitle">Who's playing today?</p>
             <div class="names-form" id="names-form"></div>
-            <button class="btn-primary" onclick="submitNames()">Let's Go! 🎬</button>
+            <button class="btn-primary" onclick="submitNames()"><i data-lucide="clapperboard"></i> Let's Go!</button>
         </div>
 
         <!-- Word Reveal Screen -->
@@ -91,20 +91,20 @@
                 <div class="card-front" id="card-front">
                     <h2 id="current-player-name">Player 1</h2>
                     <p class="tap-text">Tap to reveal your word</p>
-                    <div class="peek-icon">👁️</div>
+                    <div class="peek-icon"><i data-lucide="eye"></i></div>
                 </div>
                 <div class="card-back" id="card-back">
                     <div id="word-display"></div>
                     <p class="remember-text">Remember your word!</p>
                 </div>
             </div>
-            <button class="btn-secondary" id="next-player-btn" onclick="nextPlayer()">Next Player →</button>
-            <button class="btn-secondary" id="start-discussion-btn" onclick="startDiscussion()" style="display:none">Start Discussion 🗣️</button>
+            <button class="btn-secondary" id="next-player-btn" onclick="nextPlayer()">Next Player <i data-lucide="arrow-right"></i></button>
+            <button class="btn-secondary" id="start-discussion-btn" onclick="startDiscussion()" style="display:none"><i data-lucide="message-circle"></i> Start Discussion</button>
         </div>
 
         <!-- Discussion Screen -->
         <div id="discussion-screen" class="screen">
-            <h2>🗣️ Discussion Time</h2>
+            <h2><i data-lucide="message-circle"></i> Discussion Time</h2>
             <p class="discussion-info">Each player describes the word WITHOUT saying it.<br>Find the impostor!</p>
             
             <div class="speaking-order-section" id="speaking-order"></div>
@@ -112,13 +112,13 @@
             <div class="timer-section">
                 <div class="timer" id="timer">03:00</div>
                 <div class="timer-controls">
-                    <button class="btn-small" onclick="toggleTimer()" id="timer-btn">⏸️ Pause</button>
-                    <button class="btn-small" onclick="resetTimer()">🔄 Reset</button>
+                    <button class="btn-small" onclick="toggleTimer()" id="timer-btn"><i data-lucide="circle-pause"></i> Pause</button>
+                    <button class="btn-small" onclick="resetTimer()"><i data-lucide="rotate-cw"></i> Reset</button>
                 </div>
             </div>
 
             <div class="tips-box">
-                <h3>💡 Rules</h3>
+                <h3><i data-lucide="lightbulb"></i> Rules</h3>
                 <ul>
                     <li>Speak in order — tap a name to track whose turn it is</li>
                     <li>Give one clue per round, then pass to the next</li>
@@ -127,15 +127,15 @@
                 </ul>
             </div>
 
-            <button class="btn-primary" onclick="startVoting()">Start Voting 🗳️</button>
+            <button class="btn-primary" onclick="startVoting()"><i data-lucide="vote"></i> Start Voting</button>
         </div>
 
         <!-- Voting Screen -->
         <div id="voting-screen" class="screen">
-            <h2>🗳️ Vote!</h2>
+            <h2><i data-lucide="vote"></i> Vote!</h2>
             <p>Who do you think is the impostor?</p>
             <div class="vote-grid" id="vote-grid"></div>
-            <button class="btn-primary" onclick="revealImpostor()">Reveal Impostor 🎭</button>
+            <button class="btn-primary" onclick="revealImpostor()"><i data-lucide="drama"></i> Reveal Impostor</button>
         </div>
 
         <!-- Result Screen -->
@@ -145,12 +145,14 @@
                 <p>The word was:</p>
                 <h2 id="the-word" class="the-word"></h2>
             </div>
-            <button class="btn-primary" onclick="playAgain()">Play Again 🔄</button>
-            <button class="btn-secondary" onclick="goHome()">Home 🏠</button>
+            <button class="btn-primary" onclick="playAgain()"><i data-lucide="refresh-cw"></i> Play Again</button>
+            <button class="btn-secondary" onclick="goHome()"><i data-lucide="house"></i> Home</button>
         </div>
     </div>
 
     <script src="words.js"></script>
     <script src="game.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
