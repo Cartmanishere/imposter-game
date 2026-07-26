@@ -26,7 +26,7 @@ A social deduction party game for 3–12 players. One (or more) of you doesn't b
 
 ## Play Online
 
-**[Play now →](https://cartmanishere.github.io/imposter-game/)**
+**[Play now →](https://imposter.kanha.dev/)**
 
 No install needed — just open the link on any device.
 
