@@ -368,6 +368,10 @@ h1 {
     color: var(--danger);
     margin-bottom: 16px;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .civilian-badge {
@@ -380,6 +384,10 @@ h1 {
     color: var(--success);
     margin-bottom: 16px;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .real-word, .impostor-word {
