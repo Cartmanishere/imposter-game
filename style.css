@@ -773,11 +773,12 @@ h1 {
 /* ============================================
    Icon Helpers
    ============================================ */
-i[data-lucide] {
+i[data-lucide], svg.lucide {
     display: inline-block;
     width: 1.1em;
     height: 1.1em;
     vertical-align: -0.175em;
+    flex-shrink: 0;
 }
 
 h1 i[data-lucide], h1 svg.lucide {
@@ -801,15 +802,21 @@ h3 i[data-lucide], h3 svg.lucide {
     margin-right: 4px;
 }
 
-button i[data-lucide], button svg.lucide {
-    margin-right: 4px;
+/* Icons inside any button or button-like element */
+button i[data-lucide], button svg.lucide,
+.category-btn i[data-lucide], .category-btn svg.lucide,
+.btn-circle i[data-lucide], .btn-circle svg.lucide,
+.vote-btn i[data-lucide], .vote-btn svg.lucide,
+.order-item i[data-lucide], .order-item svg.lucide {
+    margin-right: 0;
 }
 
-.btn-primary, .btn-secondary, .btn-small {
+/* Unified flex row for all button types */
+.btn-primary, .btn-secondary, .btn-small, .vote-btn, .btn-circle, .category-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 /* ============================================
