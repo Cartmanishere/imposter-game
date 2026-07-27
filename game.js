@@ -239,12 +239,6 @@ function renderSpeakingOrder() {
     const container = document.getElementById('speaking-order');
     container.innerHTML = '';
 
-    const starterName = gameState.playerNames[gameState.starterIndex - 1];
-    const starterBanner = document.createElement('div');
-    starterBanner.className = 'starter-banner';
-    starterBanner.innerHTML = `<i data-lucide="shuffle"></i> Randomized! <strong>${starterName}</strong> starts first!`;
-    container.appendChild(starterBanner);
-
     const list = document.createElement('div');
     list.className = 'order-list';
     gameState.speakingOrder.forEach((playerIdx, i) => {
