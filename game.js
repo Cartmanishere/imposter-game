@@ -55,12 +55,29 @@ function renderNamesForm() {
             <span class="name-number">${i}</span>
             <input type="text" class="name-input" id="name-${i}" 
                    placeholder="Player ${i}" value="${existing}" 
-                   autocomplete="off" />
+                   autocomplete="off" autocorrect="off" autocapitalize="words"
+                   enterkeyhint="next" inputmode="text" />
         `;
         form.appendChild(div);
     }
     // Auto-focus first input
     setTimeout(() => document.getElementById('name-1')?.focus(), 100);
+
+    // Enter key moves to next input, last Enter submits
+    for (let i = 1; i <= gameState.playerCount; i++) {
+        const input = document.getElementById(`name-${i}`);
+        if (!input) continue;
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (i < gameState.playerCount) {
+                    document.getElementById(`name-${i + 1}`)?.focus();
+                } else {
+                    submitNames();
+                }
+            }
+        });
+    }
 }
 
 function submitNames() {

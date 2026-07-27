@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Primary Meta Tags -->
     <title>Impostor — Social Deduction Party Game</title>
@@ -28,6 +32,7 @@
     <meta name="twitter:title" content="Impostor — Social Deduction Party Game">
     <meta name="twitter:description" content="A social deduction party game for 3–12 players. One of you doesn't belong — can you find the impostor before they blend in?">
 
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -87,7 +92,7 @@
 
         <!-- Word Reveal Screen -->
         <div id="reveal-screen" class="screen">
-            <div class="reveal-card" id="reveal-card">
+            <div class="reveal-card" id="reveal-card" style="touch-action: manipulation">
                 <div class="card-front" id="card-front">
                     <h2 id="current-player-name">Player 1</h2>
                     <p class="tap-text">Tap to reveal your word</p>

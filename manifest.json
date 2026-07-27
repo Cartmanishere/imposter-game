@@ -1,0 +1,17 @@
+{
+  "name": "Impostor — Social Deduction Party Game",
+  "short_name": "Impostor",
+  "description": "A social deduction party game for 3–12 players. One of you doesn't belong — can you find the impostor before they blend in?",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#f59e0b",
+  "background_color": "#12110e",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
